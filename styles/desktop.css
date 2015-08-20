@@ -2,6 +2,7 @@
 *{
 padding:0;
 margin:0;
+font-size: 1.2em;
 }
 
 #Main{
@@ -13,8 +14,8 @@ margin:0;
 /* Main Card*/
 #Card td, #Card th{
 	border: 1px solid black;
-	height: 2em;
-	width: 2em;
+	height: 3em;
+	width: 3em;
 	text-align: center;
 }
 
