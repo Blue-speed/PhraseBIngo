@@ -16,6 +16,6 @@ app.controller('NamesController', ['$scope', 'BingoPhrases',function($scope,Bing
 		var index = $(event.target).data('num');
 		$scope.Phrases[index].Found = 1;
 		$("#Name-"+index).addClass("Found");
-		$("#cell-"+index).html("X");
+		$("#cell-"+(index+1)).html("X");
 	};
 }]);
