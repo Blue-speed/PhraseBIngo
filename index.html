@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+
+<!--Includes-->
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<!--Main Game Files-->
+<script src="scripts/init.js"></script>
+<script src="scripts/run.js"></script>
+<script src="scripts/phrases.js"></script>
+
+
+<!--Stylesheets-->
+<link rel="stylesheet" type="text/css" href="styles/desktop.css" />
+
+<body ng-app="BINGO">
+<div id="Main" ng-controller="BingoController" >
+<div id="Card" ng-controller="CardController">
+	<table>
+	<tr id="CardHead">
+	<th>B</th>
+	<th>I</th>
+	<th>N</th>
+	<th>G</th>
+	<th>O</th>
+	</tr>
+	<tr>
+	<td id="cell-1"></td>
+	<td id="cell-2"></td>
+	<td id="cell-3"></td>
+	<td id="cell-4"></td>
+	<td id="cell-5"></td>
+	</tr>
+	<tr>
+	<td id="cell-6"></td>
+	<td id="cell-7"></td>
+	<td id="cell-8"></td>
+	<td id="cell-9"></td>
+	<td id="cell-10"></td>
+	</tr>
+	<tr>
+	<td id="cell-11"></td>
+	<td id="cell-12"></td>
+	<td>X</td>
+	<td id="cell-13"></td>
+	<td id="cell-14"></td>
+	</tr>
+	<tr>
+	<td id="cell-15"></td>
+	<td id="cell-16"></td>
+	<td id="cell-17"></td>
+	<td id="cell-18"></td>
+	<td id="cell-19"></td>
+	</tr>
+	<tr>
+	<td id="cell-20"></td>
+	<td id="cell-21"></td>
+	<td id="cell-22"></td>
+	<td id="cell-23"></td>
+	<td id="cell-24"></td>
+	</tr>
+	</table>
+</div>
+
+<div id="Names" ng-controller="NamesController">
+	<ul>
+	<li ng-repeat="(index,phrase) in Phrases" id="Name-{{index}}" data-num='{{index}}' ng-click="Click($event)">{{phrase.Phrase}}</li>
+	</ul>
+</div>
+
+</div>
+</body>
+
+</html>
