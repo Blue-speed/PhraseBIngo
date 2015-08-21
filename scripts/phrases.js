@@ -9,7 +9,6 @@ var AllPhrases ={"list":[
         "value-add",
         "Mac's are better",
         "paradigm",
-        "Data Drivin",
         "Win WIn",
         "ROI",
         "Data Driven",
@@ -24,5 +23,11 @@ var AllPhrases ={"list":[
         "Version 10 :(",
         "Teirs",
         "Cloud",
-        "manage Branding"
+        "manage Branding",
+		"Collaboration",
+		"Respect",
+		"Strong Relationships",
+		"Integrity",
+		"Commitment to Excellence",
+		"Compittion"
 ]}

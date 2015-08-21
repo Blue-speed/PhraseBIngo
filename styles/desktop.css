@@ -12,6 +12,11 @@ font-size: 1.05em;
 }
 
 /* Main Card*/
+#Card table{
+	margin-left:auto;
+	margin-right:auto;
+}
+
 #Card td, #Card th{
 	border: 1px solid black;
 	height: 2em;
@@ -30,8 +35,16 @@ font-size: 1.05em;
 	padding: 5px;
 	border: 1px solid black;
 	margin: 5px;
+	text-align: center;
+	    list-style-type: none;
 }
 
 #Names li.Found{
 	background-color: gray;
+}
+
+#Names li.NameHeader{
+	background-color: lightgray;
+	font-weight:bold;
+	font-size: 1.1em;
 }
