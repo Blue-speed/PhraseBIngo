@@ -6,20 +6,22 @@
 <!--Includes-->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://raw.githubusercontent.com/jweir/namespace/master/namespace.js"></script>
 
 <!--Main Game Files-->
 <script src="scripts/init.js"></script>
-<script src="scripts/run.js"></script>
 <script src="scripts/phrases.js"></script>
+<script src="scripts/service.js"></script>
+<script src="scripts/run.js"></script>
 
 
 <!--Stylesheets-->
 <link rel="stylesheet" type="text/css" href="styles/desktop.css" />
 
 <body ng-app="BINGO">
-<div id="Main" ng-controller="BingoController" >
-<div id="Card" ng-controller="CardController">
-	<table>
+<div id="Main">
+<div id="Card">
+	<table ng-controller="BoardController">
 	<tr id="CardHead">
 	<th>B</th>
 	<th>I</th>
@@ -68,15 +70,15 @@
 <div id="Names" ng-controller="NamesController">
 	<ul>
 	<li id="Name-B" class="NameHeader">B</li>
-	<li ng-repeat="(index,phrase) in Phrases.slice(0,5)" id="Name-{{phrase.Index}}" data-num='{{phrase.Index}}' ng-class="{Found: phrase.Found == 1}" ng-click="Click($event)">{{phrase.Phrase}}</li>
+	<li ng-repeat="(index,phrase) in Card.slice(0,5)" id="Name-{{phrase.Index}}" data-num='{{phrase.Index}}' ng-class="{Found: phrase.Found == 1}" ng-click="Click($event)">{{phrase.Phrase}}</li>
 	<li id="Name-I" class="NameHeader">I</li>
-	<li ng-repeat="(index,phrase) in Phrases.slice(5,10)" id="Name-{{phrase.Index}}" data-num='{{phrase.Index}}' ng-class="{Found: phrase.Found == 1}" ng-click="Click($event)">{{phrase.Phrase}}</li>
+	<li ng-repeat="(index,phrase) in Card.slice(5,10)" id="Name-{{phrase.Index}}" data-num='{{phrase.Index}}' ng-class="{Found: phrase.Found == 1}" ng-click="Click($event)">{{phrase.Phrase}}</li>
 	<li id="Name-N" class="NameHeader">N</li>
-	<li ng-repeat="(index,phrase) in Phrases.slice(10,15)" id="Name-{{phrase.Index}}" data-num='{{phrase.Index}}' ng-class="{Found: phrase.Found == 1}" ng-click="Click($event)">{{phrase.Phrase}}</li>
+	<li ng-repeat="(index,phrase) in Card.slice(10,15)" id="Name-{{phrase.Index}}" data-num='{{phrase.Index}}' ng-class="{Found: phrase.Found == 1}" ng-click="Click($event)">{{phrase.Phrase}}</li>
 	<li id="Name-G" class="NameHeader">G</li>
-	<li ng-repeat="(index,phrase) in Phrases.slice(15,20)" id="Name-{{phrase.Index}}" data-num='{{phrase.Index}}' ng-class="{Found: phrase.Found == 1}" ng-click="Click($event)">{{phrase.Phrase}}</li>
+	<li ng-repeat="(index,phrase) in Card.slice(15,20)" id="Name-{{phrase.Index}}" data-num='{{phrase.Index}}' ng-class="{Found: phrase.Found == 1}" ng-click="Click($event)">{{phrase.Phrase}}</li>
 	<li id="Name-O" class="NameHeader">O</li>
-	<li ng-repeat="(index,phrase) in Phrases.slice(20,25)" id="Name-{{phrase.Index}}" data-num='{{phrase.Index}}' ng-class="{Found: phrase.Found == 1}" ng-click="Click($event)">{{phrase.Phrase}}</li>
+	<li ng-repeat="(index,phrase) in Card.slice(20,25)" id="Name-{{phrase.Index}}" data-num='{{phrase.Index}}' ng-class="{Found: phrase.Found == 1}" ng-click="Click($event)">{{phrase.Phrase}}</li>
 	</ul>
 </div>
 
