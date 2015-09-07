@@ -19,66 +19,24 @@
 <link rel="stylesheet" type="text/css" href="styles/desktop.css" />
 
 <body ng-app="BINGO">
-<div id="Main">
+<div id="Main" ng-controller="BingoController" ng-class="{Bingo: IsBingo}">
 <div id="Card">
 	<table ng-controller="BoardController">
 	<tr id="CardHead">
-	<th>B</th>
-	<th>I</th>
-	<th>N</th>
-	<th>G</th>
-	<th>O</th>
+	<th ng-repeat="title in Card.Header">{{title}}</th>
 	</tr>
-	<tr>
-	<td id="cell-0"></td>
-	<td id="cell-5"></td>
-	<td id="cell-10"></td>
-	<td id="cell-15"></td>
-	<td id="cell-20"></td>
-	</tr>
-	<tr>
-	<td id="cell-1"></td>
-	<td id="cell-6"></td>
-	<td id="cell-11"></td>
-	<td id="cell-16"></td>
-	<td id="cell-21"></td>
-	</tr>
-	<tr>
-	<td id="cell-2"></td>
-	<td id="cell-7"></td>
-	<td id="cell-12">X</td>
-	<td id="cell-17"></td>
-	<td id="cell-22"></td>
-	</tr>
-	<tr>
-	<td id="cell-3"></td>
-	<td id="cell-8"></td>
-	<td id="cell-13"></td>
-	<td id="cell-18"></td>
-	<td id="cell-23"></td>
-	</tr>
-	<tr>
-	<td id="cell-4"></td>
-	<td id="cell-9"></td>
-	<td id="cell-14"></td>
-	<td id="cell-19"></td>
-	<td id="cell-24"></td>
+	<tr ng-repeat="row in [0,1,2,3,4]">
+		<td ng-repeat="column in Card.AsArray" id="cell-{{column[row].Row}}-{{column[row].Column}}" ng-class="{Found: column[row].Found == 1}"
+			data-col="{{column[row].Column}}" data-row="{{column[row].Row}}"></td>
 	</tr>
 	</table>
 </div>
 
 <div id="Names" ng-controller="NamesController">
 	<ul>
-	<li id="Name-B" class="NameHeader">B</li>
-	<li ng-repeat="(index,phrase) in Card.slice(0,5)" id="Name-{{phrase.Index}}" data-num='{{phrase.Index}}' ng-class="{Found: phrase.Found == 1}" ng-click="Click($event)">{{phrase.Phrase}}</li>
-	<li id="Name-I" class="NameHeader">I</li>
-	<li ng-repeat="(index,phrase) in Card.slice(5,10)" id="Name-{{phrase.Index}}" data-num='{{phrase.Index}}' ng-class="{Found: phrase.Found == 1}" ng-click="Click($event)">{{phrase.Phrase}}</li>
-	<li id="Name-N" class="NameHeader">N</li>
-	<li ng-repeat="(index,phrase) in Card.slice(10,15)" id="Name-{{phrase.Index}}" data-num='{{phrase.Index}}' ng-class="{Found: phrase.Found == 1}" ng-click="Click($event)">{{phrase.Phrase}}</li>
-	<li id="Name-G" class="NameHeader">G</li>
-	<li ng-repeat="(index,phrase) in Card.slice(15,20)" id="Name-{{phrase.Index}}" data-num='{{phrase.Index}}' ng-class="{Found: phrase.Found == 1}" ng-click="Click($event)">{{phrase.Phrase}}</li>
-	<li id="Name-O" class="NameHeader">O</li>
-	<li ng-repeat="(index,phrase) in Card.slice(20,25)" id="Name-{{phrase.Index}}" data-num='{{phrase.Index}}' ng-class="{Found: phrase.Found == 1}" ng-click="Click($event)">{{phrase.Phrase}}</li>
+	<li ng-repeat-start="(col,title) in Card.Header" d="Name-{{title}}" class="NameHeader">{{title}}</li>
+	<li ng-repeat-end ng-repeat="phrase in Card.GetColumn(col)" id="Name-{{phrase.Row}}-{{phrase.Column}}"
+		data-row="{{phrase.Row}}" data-col="{{phrase.Column}}" ng-class="{Found: phrase.Found == 1}" ng-click="Click($event)">{{phrase.Phrase}}</li>
 	</ul>
 </div>
 

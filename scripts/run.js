@@ -5,31 +5,30 @@
 //Get a refrence to the app;
 	$App = BlueSpeed.Bingo.App;
 
-	$App.controller("BoardController",['$scope', 'BingoCard',Board]);
+	$App.controller("BoardController",['$scope', '$timeout',Board]);
 
- 	$App.controller('NamesController', ['$scope', 'BingoCard',List]);
+	$App.controller('NamesController', ['$scope',List]);
 
-function List($scope,$BingoCard) {
-//Scope
-$scope.Card = $BingoCard;
+	$App.controller('BingoController', ['$scope', 'BingoCard',Game]);
+
+function List($scope) {
 $scope.Click = function(event){
-	var index = $(event.target).data('num');
-	$scope.Card[index].Found = 1;
-	$("#cell-"+index).html("X");
+	var row = $(event.target).data('row');
+	var col = $(event.target).data('col');
+	$scope.Card.Get(row,col).Found = 1;
+	$scope.TestBingo(row,col);
 };
 }
 
-function Cell($scope,$BingoCard, $cell){
-	$scope.Cell = $BingoCard[$cell];
+function Board($scope){
 };
 
-function Board($scope, $BingoCard){
-
-
-//Create the cell controller
-	$scope.Cell = function(){
-		var cell = 1; //Get the cell
-		return $controller('Cell', {$scope: $scope.$new() ,$BingoCard,cell}).constructor;
+function Game($scope,$BingoCard){
+	$scope.Card = $BingoCard;
+	$scope.IsBingo = false;
+	$scope.TestBingo = function(row,col){
+		if(!$scope.IsBingo)
+			$scope.IsBingo = $scope.Card.IsCellBingo(row,col);
 	};
 };
 
