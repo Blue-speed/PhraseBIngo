@@ -92,7 +92,7 @@ Card = function(){
       return false;
     if(col == row && isDiaginalBingo())
       return true;
-    if ((col == 5-row || row == 5-col) && isReverseDiaginalBingo())
+    if ((col == 4-row || row == 4-col) && isReverseDiaginalBingo())
       return true;
     if(isColumnBingo(col) || isRowBingo(row))
       return true;
