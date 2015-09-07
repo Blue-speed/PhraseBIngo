@@ -122,7 +122,7 @@ Card = function(){
   };
   function isReverseDiaginalBingo(){
     for(i=0;i<5;i++)
-      if(_array[i][5-i].Found == 0)
+      if(_array[i][4-i].Found == 0)
         return false;
     return true;
   };
